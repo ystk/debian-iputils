@@ -1,3 +1,80 @@
+iputils (3:20121221-5) unstable; urgency=low
+
+  * Improve management of capabilities.
+  * Set capabilities on all binaries.
+  * Invalidate ping's DNS cache when a response comes from a new host
+    (e.g.  when processing an error message) (Closes: 732186, 736470)
+  * Bump standards version to 3.9.5 (no changes)
+
+ -- Noah Meyerhans <noahm@debian.org>  Sat, 01 Feb 2014 13:15:39 -0800
+
+iputils (3:20121221-4) unstable; urgency=low
+
+  * Cache DNS lookup results. (Closes: 109709)
+  * Move the dependency on libcap2-bin to a Recommends instead, to avoid
+    depending on a lower priority package.
+  * Fix a typo in flood ping output. (Closes: 698287)
+  * arping: When using -c, exit immediately if the specified number of
+    queries are answered. (Closes: 686944)
+  * Fix return hops counting in tracepath and tracepath6. (Closes: 629075)
+
+ -- Noah Meyerhans <noahm@debian.org>  Thu, 12 Dec 2013 23:54:51 -0800
+
+iputils (3:20121221-3) unstable; urgency=low
+
+  * Add build-depends on libgnutls-openssl-dev (Closes: 731561)
+  * Fix arping and ping postinst scripts to better handle cases
+    where capabilities aren't supported. (Closes: 731764)
+  * Update debian/copyright to reflect the removal of the advertising
+    clause from the UC Berkeley copyright statements. (Closes: 725470)
+
+ -- Noah Meyerhans <noahm@debian.org>  Mon, 09 Dec 2013 08:14:40 -0800
+
+iputils (3:20121221-2) unstable; urgency=low
+
+  * Silence erroneous "kernel is not very fresh" warnings. (Closes: 709052)
+  * Cherry pick revision 608419a7 from upstream for traceroute 
+    max-hops options
+  * Cherry pick revision cec404067 from upstream for tracepath, tracepath6 
+    minor bugfixes
+  * Enable the CAP_NET_RAW capability and strip the setuid bit on ping and
+    ping6 binaries if possible.
+  * Bump standards version to 3.9.4.0 (No changes needed.)
+
+ -- Noah Meyerhans <noahm@debian.org>  Sun, 08 Dec 2013 17:47:52 -0800
+
+iputils (3:20121221-1) unstable; urgency=low
+
+  * New upstream version
+  * Replace libsysfs-dev with libcap-dev in build-deps (Closes: 627650, 609853)
+  * Replace libssl-dev with gnutls-dev in build-deps
+  * Remove obsolete debian/patches/fix-dead-host-ping-stats.diff
+  * Remove obsolete debian/patches/add-icmp-return-codes.diff
+  * Remove obsolete patch cleanup-docbook-formatting.diff
+  * Remove obsolete patch fix_rfc4620_nodeinfo_queries
+
+ -- Noah Meyerhans <noahm@debian.org>  Tue, 14 May 2013 23:59:05 -0700
+
+iputils (3:20101006-3) unstable; urgency=low
+
+  * Fix CFLAGS, which never actually propagated from debian/rules
+    to the compiler in the previous release (Closes: 656023)
+
+ -- Noah Meyerhans <noahm@debian.org>  Wed, 29 Aug 2012 10:17:28 -0700
+
+iputils (3:20101006-2) unstable; urgency=low
+
+  * Fix RFC 4620 node info queries in ping6 (Closes: 683324)
+  * Fix regression in ping* causing audible notifications to always
+    be enabled when flood pinging (Closes: 601147)
+  * Flush stdout when processing truncated ping* replies 
+    (Closes: 628893)
+  * Use dpkg-buildflags to set build flags.
+  * Add build-arch and build-indep rules in debian/rules
+  * Bump standards compliance to 3.9.3.1
+
+ -- Noah Meyerhans <noahm@debian.org>  Sun, 19 Aug 2012 21:31:38 -0700
+
 iputils (3:20101006-1) unstable; urgency=low
 
   * New upstream release.

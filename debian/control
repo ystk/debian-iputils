@@ -2,8 +2,8 @@ Source: iputils
 Section: net
 Priority: extra
 Maintainer: Noah Meyerhans <noahm@debian.org>
-Standards-Version: 3.8.4.0
-Build-Depends: debhelper (>= 7), sp, sgmlspl, docbook, libsysfs-dev, libssl-dev
+Standards-Version: 3.9.5
+Build-Depends: debhelper (>= 7), sp, sgmlspl, docbook, libcap-dev, libgnutls-openssl-dev
 Vcs-Git: git://git.debian.org/collab-maint/iputils.git
 Vcs-Browser: http://git.debian.org/?p=collab-maint/iputils.git;a=summary
 
@@ -11,9 +11,8 @@ Package: iputils-ping
 Architecture: any
 Provides: ping
 Priority: important
-Conflicts: ping, suidmanager (<< 0.50)
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Replaces: netbase (<< 4.00)
+Recommends: libcap2-bin
 Description: Tools to test the reachability of network hosts
  The ping command sends ICMP ECHO_REQUEST packets to a host in order to
  test if the host is reachable via the network.
@@ -26,8 +25,6 @@ Architecture: any
 Suggests: traceroute
 Priority: optional
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Conflicts: suidmanager (<< 0.50)
-Replaces: netbase (<< 4.00)
 Description: Tools to trace the network path to a remote host
  The tracepath utility is similar to the traceroute utility, but also
  attempts to discover the MTU of the path.
@@ -38,8 +35,8 @@ Description: Tools to trace the network path to a remote host
 Package: iputils-arping
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Conflicts: suidmanager (<< 0.50), arping, iputils-ping (<<20001110-6)
-Replaces: netbase (<< 4.00)
+Recommends: libcap2-bin
+Conflicts: arping
 Description: Tool to send ICMP echo requests to an ARP address
  The arping command acts like the standard ping command except it pings
  a machine by its ARP address instead of its IP address.  It is typically
